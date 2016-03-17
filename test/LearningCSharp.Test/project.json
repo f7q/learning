@@ -4,8 +4,6 @@
   "commands": {
     "test": "xunit.runner.dnx"
   },
-  "dependencies": {
-  },
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
