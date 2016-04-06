@@ -1,4 +1,6 @@
 # learning
+
+[![Join the chat at https://gitter.im/f7q/learning](https://badges.gitter.im/f7q/learning.svg)](https://gitter.im/f7q/learning?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 learning Github
 
 |Circle CI|MyGet CI|Travis CI|Appveyor CI|
