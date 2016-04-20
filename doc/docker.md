@@ -31,7 +31,7 @@ apt-get install -y docker.io
 apt-get install -y lxc-docker
 ```
 
-ローカルファイルを使用したテストコマンド実行
+ローカルファイルを使用したテストコマンド実行  
 `docker run -v ${PWD}:/project -it <image> bash -c 'command.sh'`
 
 # Mac OS
