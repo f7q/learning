@@ -28,7 +28,7 @@ IF "%BUILDCMD_KOREBUILD_VERSION%"=="" (
 
 :getdnx
 IF "%BUILDCMD_DNX_VERSION%"=="" (
-    SET BUILDCMD_DNX_VERSION=latest
+    SET BUILDCMD_DNX_VERSION=dnx-coreclr-win-x86.1.0.0-rc1-update1
 )
 IF "%SKIP_DNX_INSTALL%"=="" (
     CALL packages\KoreBuild\build\dnvm install %BUILDCMD_DNX_VERSION% -runtime CoreCLR -arch x86 -alias default
