@@ -1,7 +1,7 @@
 language: csharp
-sudo: required
-before_install:
-  - chmod +x build.sh
+#sudo: required
+#before_install:
+#  - chmod +x build.sh
 #mono:
 #  - beta
 #env:
@@ -10,4 +10,5 @@ os:
   - linux
 #  - osx
 script:
-  - ./build.sh --quiet verify
+  - exist 0
+#  - ./build.sh --quiet verify
