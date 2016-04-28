@@ -2,13 +2,13 @@
 cd %~dp0
 
 SETLOCAL
-SET NUGET_VERSION=latest
+SET NUGET_VERSION=v3.3.0
 SET CACHED_NUGET=%LocalAppData%\NuGet\nuget.%NUGET_VERSION%.exe
 SET BUILDCMD_KOREBUILD_VERSION=
 SET BUILDCMD_DNX_VERSION=
 
 IF EXIST %CACHED_NUGET% goto copynuget
-echo Downloading latest version of NuGet.exe...
+echo Downloading v3.3.0 version of NuGet.exe...
 IF NOT EXIST %LocalAppData%\NuGet md %LocalAppData%\NuGet
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest 'https://dist.nuget.org/win-x86-commandline/%NUGET_VERSION%/nuget.exe' -OutFile '%CACHED_NUGET%'"
 
