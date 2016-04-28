@@ -2,13 +2,13 @@
 cd %~dp0
 
 SETLOCAL
-SET NUGET_VERSION=v3.3.0
+SET NUGET_VERSION=latest
 SET CACHED_NUGET=%LocalAppData%\NuGet\nuget.%NUGET_VERSION%.exe
 SET BUILDCMD_KOREBUILD_VERSION=
 SET BUILDCMD_DNX_VERSION=
 
 IF EXIST %CACHED_NUGET% goto copynuget
-echo Downloading v3.3.0 version of NuGet.exe...
+echo Downloading latest version of NuGet.exe...
 IF NOT EXIST %LocalAppData%\NuGet md %LocalAppData%\NuGet
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest 'https://dist.nuget.org/win-x86-commandline/%NUGET_VERSION%/nuget.exe' -OutFile '%CACHED_NUGET%'"
 
@@ -28,7 +28,7 @@ IF "%BUILDCMD_KOREBUILD_VERSION%"=="" (
 
 :getdnx
 IF "%BUILDCMD_DNX_VERSION%"=="" (
-    SET BUILDCMD_DNX_VERSION=latest
+    SET BUILDCMD_DNX_VERSION=dnx-coreclr-win-x86.1.0.0-rc1-update1
 )
 IF "%SKIP_DNX_INSTALL%"=="" (
     CALL packages\KoreBuild\build\dnvm install %BUILDCMD_DNX_VERSION% -runtime CoreCLR -arch x86 -alias default
