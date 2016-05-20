@@ -1,26 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Authentication;
-using Microsoft.AspNet.Authentication.Cookies;
-using Microsoft.AspNet.Authentication.JwtBearer;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace LearningCSharp.Service.Controllers
+namespace LearningCSharp.Service
 {
-    //[Authorize]
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        // GET: api/values
+        // GET api/values
         [HttpGet]
-        //[AllowAnonymous]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };

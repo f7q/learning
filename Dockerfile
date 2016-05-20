@@ -1,4 +1,4 @@
-FROM microsoft/aspnet:1.0.0-rc1-update1
+FROM microsoft/dotnet:1.0.0-preview1
 
 MAINTAINER f799 <kokudou330@gmail.com>
 
