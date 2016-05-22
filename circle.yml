@@ -8,4 +8,4 @@ dependencies:
 
 test:
   override:
-    - docker run -v ${PWD}:/project -it f799/learning /bin/sh -c 'cd test/LearningCSharp.Test/;dotnet restore;dotnet build;dotnet test -parallel none'
+    - docker run -v ${PWD}:/project -it f799/learning /bin/sh -c 'cd test/LearningCSharp.Test/;dotnet restore;dotnet build;dotnet test'
