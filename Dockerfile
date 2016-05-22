@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.0.0-preview1
+FROM microsoft/dotnet:1.0.0-preview
 
 MAINTAINER f799 <kokudou330@gmail.com>
 
