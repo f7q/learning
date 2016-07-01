@@ -1,7 +1,5 @@
 language: csharp
 sudo: required
-before_install:
-  - chmod +x build.sh
 dist: trusty
 addons:
   apt:
@@ -13,6 +11,7 @@ addons:
     - libunwind8
     - zlib1g
 before_install:
+  - chmod +x build.sh
   - if test "$TRAVIS_OS_NAME" == "osx"; then brew update; brew install icu4c; brew install openssl; brew link --force openssl; fi
 mono:
   - 4.0.5
