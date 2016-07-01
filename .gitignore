@@ -2,6 +2,8 @@
 [Bb]in/
 TestResults/
 .nuget/
+.build/
+.testPublish/
 *.sln.ide/
 _ReSharper.*/
 packages/
@@ -35,3 +37,5 @@ nuget.exe
 node_modules
 **/[Cc]ompiler/[Rr]esources/**/*.js
 *.log
+*launchSettings.json
+*.orig
