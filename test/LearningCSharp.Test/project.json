@@ -15,7 +15,7 @@
       ],
       "dependencies": {
         "Microsoft.NETCore.App": {
-          "version": "1.0.1",
+          "version": "1.0.0",
           "type": "platform"
         },
         "System.Diagnostics.Process": "4.1.0"
