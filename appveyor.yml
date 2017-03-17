@@ -1,9 +1,10 @@
 version: 1.0.{build}
 branches:
   only:
-  - dev
+  - UpdateSDK
 build_script:
-- ps: .\build.ps1
-test: off
+  - ps: .\build.ps1
+test: 
+  - ps: .\build.ps1
 
 image: Visual Studio 2017
