@@ -8,4 +8,7 @@ dependencies:
 
 test:
   override:
-    - docker run -v ${PWD}:/project -it f799/learning:UpdateSDK /bin/sh -c 'cd test/LearningCSharp.Test/;dotnet restore;dotnet build;dotnet test -parallel none'
+    - pwd
+    - ls
+    - echo "コメント"
+    - /bin/bash ./build.sh
