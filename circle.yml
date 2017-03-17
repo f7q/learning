@@ -11,4 +11,5 @@ test:
     - pwd
     - ls
     - echo "コメント"
+    - chmod +x build.sh
     - /bin/bash ./build.sh
