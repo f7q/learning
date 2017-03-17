@@ -37,6 +37,9 @@ RUN apt-get -y install nano
 
 ## dotnet core
 RUN apt-get -y install apt-transport-https
+ENV PROJECT /project
+RUN mkdir $PROJECT
+WORKDIR $PROJECT
 ## https://github.com/dotnet/core/blob/master/release-notes/download-archive.md
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893

@@ -8,3 +8,7 @@ build_script:
 
 # Tests
 test: off
+
+# Build cache
+cache:
+  - tools -> build.cake
