@@ -1,20 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{300E0329-90EB-4F9F-9B73-5491F0169429}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BF8D1B4A-BD03-49D1-BB34-0FA42DC3E118}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LearningCSharp.Test", "test\LearningCSharp.Test\LearningCSharp.Test.xproj", "{022C36DC-46E7-4158-9124-A3B63DBBCB90}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE7B2CB4-793E-4C83-8B93-CB339F696FD4}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LearningCSharp.Service", "src\LearningCSharp.Service\LearningCSharp.Service.xproj", "{2526790F-F5E5-4D75-A5B0-9435DE1A38B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningCSharp.Test", "test\LearningCSharp.Test\LearningCSharp.Test.csproj", "{022C36DC-46E7-4158-9124-A3B63DBBCB90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningCSharp.Service", "src\LearningCSharp.Service\LearningCSharp.Service.csproj", "{2526790F-F5E5-4D75-A5B0-9435DE1A38B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
