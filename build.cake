@@ -12,6 +12,7 @@ var isWindows           = IsRunningOnWindows();
 var netcore             = "netcoreapp1.0";
 var netstandard         = "netstandard1.6";
 
+
 ///////////////////////////////////////////////////////////////////////////////
 // Clean
 ///////////////////////////////////////////////////////////////////////////////
@@ -32,7 +33,7 @@ Task("Restore")
         Sources = new [] { "https://api.nuget.org/v3/index.json" }
     };
 
-    var projects = GetFiles("./**/*.csproj");
+	var projects = GetFiles("./**/*.csproj");
 
 	foreach(var project in projects)
 	{
@@ -53,32 +54,28 @@ Task("Build")
         Configuration = configuration
     };
 
-    // libraries
-	var projects = GetFiles("./src/**/*.csproj");
-
-    if (!isWindows)
+    // main build (Windows local and Appveyor)
+    // build for all targets
+    if (isWindows)
     {
-        Information("Not on Windows - building only for " + netstandard);
-        settings.Framework = netstandard;
+        DotNetCoreBuild(Directory("./src/LearningCSharp.Service"), settings);
+        DotNetCoreBuild(Directory("./test/LearningCSharp.Test"), settings);
+
+        if (!isAppVeyor)
+        {
+            //DotNetCoreBuild(Directory("./src/LearningCSharp.Service"), settings);     
+        }
     }
-
-	foreach(var project in projects)
-	{
-	    DotNetCoreBuild(project.GetDirectory().FullPath, settings); 
-    }
-
-    // tests
-	projects = GetFiles("./test/**/*.csproj");
-
-    if (!isWindows)
+    // local mac / travis
+    // don't build for .net framework
+    else
     {
-        Information("Not on Windows - building only for " + netcore);
+        //settings.Framework = netstandard;
+        //DotNetCoreBuild(Directory("./src/LearningCSharp.Service"), settings);
+        
         settings.Framework = netcore;
-    }
-
-	foreach(var project in projects)
-	{
-	    DotNetCoreBuild(project.GetDirectory().FullPath, settings); 
+        DotNetCoreBuild(Directory("./src/LearningCSharp.Service"), settings);
+        DotNetCoreBuild(Directory("./test/LearningCSharp.Test"), settings);
     }
 });
 
@@ -95,16 +92,15 @@ Task("Test")
         Configuration = configuration
     };
 
-    var projects = GetFiles("./test/**/*.csproj");
-
     if (!isWindows)
     {
-        Information("Not on Windows - testing only for " + netcore);
-        settings.Framework = netcore;
+        Information("Not running on Windows - skipping tests for full .NET Framework");
+        settings.Framework = "netcoreapp1.6";
     }
 
+    var projects = GetFiles("./test/**/*.csproj");
     foreach(var project in projects)
-	{
+    {
         DotNetCoreTest(project.FullPath, settings);
     }
 });
@@ -119,7 +115,7 @@ Task("Pack")
 {
     if (!isWindows)
     {
-        Information("Not on Windows - skipping pack");
+        Information("Not running on Windows - skipping pack");
         return;
     }
 
@@ -141,7 +137,7 @@ Task("Pack")
 
 Task("Default")
   .IsDependentOn("Build")
-  .IsDependentOn("Test")
-  .IsDependentOn("Pack");
+  .IsDependentOn("Test");
+  //.IsDependentOn("Pack");
 
 RunTarget(target);

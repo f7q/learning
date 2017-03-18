@@ -1,14 +1,16 @@
-# Build script
-init:
-  - git config --global core.autocrlf true
-
-# Build script
+version: 1.0.{build}
+branches:
+  only:
+  - UpdateSDK
 build_script:
-  - ps: .\build.ps1 -Target "AppVeyor"
-
-# Tests
+- ps: .\build.ps1
 test: off
 
-# Build cache
-cache:
-  - tools -> build.cake
+image: Visual Studio 2017
+
+#---------------------------------#
+#  Skip builds for doc changes    #
+#---------------------------------#
+#skip_commits:
+#  # Regex for matching commit message
+#  message: /docs.*/
