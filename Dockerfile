@@ -62,3 +62,4 @@ RUN echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/4.6.
 RUN apt-get update
 RUN apt-get -y install mono-complete
 RUN apt-get -y install mono-devel referenceassemblies-pcl
+RUN apt-get -y update
