@@ -95,7 +95,7 @@ Task("Test")
     if (!isWindows)
     {
         Information("Not running on Windows - skipping tests for full .NET Framework");
-        settings.Framework = "netcoreapp1.6";
+        settings.Framework = netcore;
     }
 
     var projects = GetFiles("./test/**/*.csproj");
