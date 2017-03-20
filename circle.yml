@@ -12,5 +12,6 @@ test:
     - ls
     - echo "Comment"
     - mono --version
+    - chmod +x NuGet.config
     - chmod +x build.sh
     - /bin/bash ./build.sh
