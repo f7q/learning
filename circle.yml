@@ -9,12 +9,11 @@ dependencies:
 test:
   override:
     - docker run 
-      -v `pwd`:/project 
+      -v ${PWD}:/project 
       -it f799/learning:latest 
       -c '
       pwd;
       ls;
-      echo "Comment";
       mono --version;
       chmod +x NuGet.config;
       chmod +x build.sh;
