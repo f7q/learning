@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   override:
-    - docker pull f799/learning:UpdateSDK
+    - docker pull f799/learning:latest
 
 test:
   override:
