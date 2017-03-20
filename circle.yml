@@ -4,8 +4,13 @@ machine:
 
 dependencies:
   override:
-    - docker pull f799/learning
+    - docker pull f799/learning:latest
 
 test:
   override:
-    - docker run -v ${PWD}:/project -it f799/learning /bin/sh -c 'cd test/LearningCSharp.Test/;dotnet restore;dotnet build;dotnet test -parallel none'
+    - pwd
+    - ls
+    - echo "Comment"
+    - mono --version
+    - chmod +x build.sh
+    - /bin/bash ./build.sh

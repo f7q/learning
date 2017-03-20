@@ -39,3 +39,4 @@ node_modules
 *.log
 *launchSettings.json
 *.orig
+tools/

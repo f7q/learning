@@ -1,7 +1,16 @@
-init:
-  - git config --global core.autocrlf true
+version: 1.0.{build}
+branches:
+  only:
+  - UpdateSDK
 build_script:
-  - build.cmd --quiet --parallel verify
-clone_depth: 1
+- ps: .\build.ps1
 test: off
-deploy: off
+
+image: Visual Studio 2017
+
+#---------------------------------#
+#  Skip builds for doc changes    #
+#---------------------------------#
+#skip_commits:
+#  # Regex for matching commit message
+#  message: /docs.*/
