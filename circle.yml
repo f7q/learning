@@ -11,12 +11,12 @@ test:
     - docker run 
       -v `pwd`:/project 
       -it f799/learning:latest 
-      -c ' 
-      pwd; 
-      ls; 
-      echo "Comment"; 
-      mono --version; 
-      chmod +x NuGet.config; 
-      chmod +x build.sh 
-      /bin/bash ./build.sh 
+      -c '
+      pwd;
+      ls;
+      echo "Comment";
+      mono --version;
+      chmod +x NuGet.config;
+      chmod +x build.sh;
+      /bin/bash ./build.sh
       '
