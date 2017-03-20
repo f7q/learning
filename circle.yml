@@ -11,7 +11,7 @@ test:
     - docker run 
       -v ${PWD}:/project 
       -it f799/learning:latest 
-      -c '
+      /bin/sh -c '
       pwd;
       ls;
       mono --version;
