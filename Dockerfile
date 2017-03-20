@@ -62,4 +62,4 @@ RUN sh -c 'echo "deb http://download.mono-project.com/repo/debian wheezy/snapsho
 RUN apt-get update
 RUN apt-get -y install mono-complete
 RUN apt-get -y install mono-devel referenceassemblies-pcl
-RUN apt-get -y update
+RUN apt-get -y install curl
