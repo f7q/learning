@@ -59,7 +59,7 @@ RUN apt-get -y install curl
 #RUN mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 ## https://github.com/dotnet/core/blob/master/release-notes/download-archive.md
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys B02C46DF417A0893
 RUN apt-get update
 RUN apt-get -y install dotnet-dev-1.0.4
 
@@ -74,11 +74,6 @@ ENV UGET_XMLDOC_MODE skip
 #dotnet build
 #ASPNETCORE_URLS="http://*:5000" dotnet run
 #curl http://192.168.99.100:5000
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-RUN sh -c 'echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/4.6.0.245 main" > /etc/apt/sources.list.d/mono-xamarin.list'
-RUN apt-get update
-RUN apt-get -y install mono-complete
-RUN apt-get -y install mono-devel referenceassemblies-pcl
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 RUN sh -c 'echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/4.6.0.245 main" > /etc/apt/sources.list.d/mono-xamarin.list'
 RUN apt-get update
