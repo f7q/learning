@@ -1,16 +1,30 @@
 ﻿FROM ubuntu:16.04
 
 # system update 50MB程度
-RUN apt-get -y update
+ENV TZ Asia/Tokyo
+RUN apt-get -y update \
+  && apt-get install -y tzdata \
+#  && rm -rf /var/lib/apt/lists/* \
+  && echo "${TZ}" > /etc/timezone \
+  && rm /etc/localtime \
+  && ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+  && dpkg-reconfigure -f noninteractive tzdata
 
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get install -y apt-utils
+#RUN apt-get install -y --no-install-recommends apt-utils
 # set locale
-RUN unlink /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Japan /etc/localtime
+RUN apt-get install -y language-pack-ja
+#RUN unlink /etc/localtime
+#RUN ln -s /usr/share/zoneinfo/Japan /etc/localtime
 
 #RUN apt-get reinstall -y glibc-common
 #RUN apt-get reinstall -y glibc
 
 #RUN yum group install -y "Japanese Support"
+#RUN mkdir /usr/share/i18n/
+#RUN touch /usr/share/i18n/charmaps
+#RUN locale-gen ja_JP.UTF-8
 RUN localedef -f UTF-8 -i ja_JP ja_JP
 
 ENV LANG ja_JP.UTF-8
@@ -40,11 +54,14 @@ RUN apt-get -y install apt-transport-https
 ENV PROJECT /project
 RUN mkdir $PROJECT
 WORKDIR $PROJECT
+RUN apt-get -y install curl
+#RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+#RUN mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 ## https://github.com/dotnet/core/blob/master/release-notes/download-archive.md
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 RUN apt-get update
-RUN apt-get -y install dotnet-dev-1.0.1
+RUN apt-get -y install dotnet-dev-1.0.4
 
 ENV DOTNET_SKIP_FIRST_TIME_EXPERIENCE true
 ENV UGET_XMLDOC_MODE skip
@@ -62,4 +79,10 @@ RUN sh -c 'echo "deb http://download.mono-project.com/repo/debian wheezy/snapsho
 RUN apt-get update
 RUN apt-get -y install mono-complete
 RUN apt-get -y install mono-devel referenceassemblies-pcl
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+RUN sh -c 'echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/4.6.0.245 main" > /etc/apt/sources.list.d/mono-xamarin.list'
+RUN apt-get update
+RUN apt-get -y install mono-complete
+RUN apt-get -y install mono-devel referenceassemblies-pcl
 RUN apt-get -y install curl
+ENV DEBIAN_FRONTEND teletype

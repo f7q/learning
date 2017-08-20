@@ -1,4 +1,4 @@
-﻿FROM centos:7
+﻿FROM centos:7.2.1511
 
 # system update 50MB程度
 RUN yum -y update && yum clean all
@@ -38,10 +38,8 @@ RUN yum -y install kbd
 RUN yum -y install libunwind libicu
 RUN yum clean all
 ## https://github.com/dotnet/core/blob/master/release-notes/download-archive.md
-RUN curl -sSL -o dotnet_preview2_003131.tar.gz https://go.microsoft.com/fwlink/?LinkID=827529
-RUN mkdir -p /opt/dotnet && tar zxf dotnet_preview2_003131.tar.gz -C /opt/dotnet
-RUN ln -s /opt/dotnet/dotnet /usr/local/bin
-
+RUN curl -sSL -o dotnet-dev-centos-x64.1.0.4.tar.gz https://download.microsoft.com/download/E/7/8/E782433E-7737-4E6C-BFBF-290A0A81C3D7/dotnet-dev-centos-x64.1.0.4.tar.gz
+RUN mkdir -p /opt/dotnet && tar zxf dotnet-dev-centos-x64.1.0.4.tar.gz -C /opt/dotnet
 RUN ln -s /opt/dotnet/dotnet /usr/local/bin
 
 #ENV DOTNET_SKIP_FIRST_TIME_EXPERIENCE true
@@ -56,3 +54,9 @@ RUN ln -s /opt/dotnet/dotnet /usr/local/bin
 #dotnet build
 #ASPNETCORE_URLS="http://*:2704" dotnet run
 #curl http://192.168.99.100:5000
+RUN yum install -y yum-utils
+RUN rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+RUN yum-config-manager --add-repo http://download.mono-project.com/repo/centos7/
+RUN yum install -y mono-*4.6.1*
+
+ENV DEBIAN_FRONTEND teletype
