@@ -10,23 +10,9 @@ job1:
     - dotnet restore
     - pwd
     - ls -sl
-    - cd test/LearningCSharp.Test
-    - dotnet build
-    - cd src/LearningCSharp.Service
-    - dotnet build
+    - chmod +x build.sh
+    - ./build.sh
   only:
-    - master
-  tags:
-    - docker
-
-job2:
-  stage: test
-  script:
-    - cd test/LearningCSharp.Test
-    - dotnet restore
-    - dotnet build
-    - dotnet test
-  only:
-    - master
+    - ci_test
   tags:
     - docker
