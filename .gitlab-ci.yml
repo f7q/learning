@@ -1,0 +1,32 @@
+image: f799/learning:latest
+stages:
+  - build
+  - test
+job1:
+  stage: build
+  script:
+    - dotnet --version
+    - dotnet --info
+    - dotnet restore
+    - pwd
+    - ls -sl
+    - cd test/LearningCSharp.Test
+    - dotnet build
+    - cd src/LearningCSharp.Service
+    - dotnet build
+  only:
+    - master
+  tags:
+    - docker
+
+job2:
+  stage: test
+  script:
+    - cd test/LearningCSharp.Test
+    - dotnet restore
+    - dotnet build
+    - dotnet test
+  only:
+    - master
+  tags:
+    - docker
