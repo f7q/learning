@@ -24,6 +24,7 @@ mono:
 dotnet: 1.0.4
 
 script:
+  - chmod +x build.sh
   - ./build.sh --verbosity diagnostic
 
 cache:
