@@ -7,7 +7,7 @@
     <PackageId>LearningCSharp.Test</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net451+win8</PackageTargetFallback>
-    <RuntimeFrameworkVersion>1.0.1</RuntimeFrameworkVersion>
+    <RuntimeFrameworkVersion>1.0.5</RuntimeFrameworkVersion>
   </PropertyGroup>
 
   <ItemGroup>
