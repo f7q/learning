@@ -3,9 +3,9 @@ os:
   - osx
   - linux
 
-# .NET CLI require Ubuntu 14.04
+# .NET CLI require Ubuntu 16.04
 sudo: required
-dist: trusty
+dist: xenial
 addons:
   apt:
     packages:
@@ -19,7 +19,7 @@ addons:
 osx_image: xcode8.3
 
 mono:
-  - 4.4.2
+  - 4.6.0
 
 dotnet: 1.0.4
 
