@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using LearningCSharp.Service;
 
 namespace LearningCSharp.Test
 {
